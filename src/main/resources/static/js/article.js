@@ -22,7 +22,7 @@ if (modifyButton) {
         let params = new URLSearchParams(location.search);
         let id = params.get('id');
 
-        fetch(`api/articles/${id}`, {
+        fetch(`/api/articles/${id}`, {
             method: 'PUT', headers: {
                 "Content-Type": "application/json",
             }, body: JSON.stringify({
@@ -36,25 +36,26 @@ if (modifyButton) {
     });
 }
 
-// const createButton = document.getElementById("create-btn");
-// console.log("createButton")
-// if (createButton) {
-//     createButton.addEventListener("click", ev => {
-//         fetch("api/articles", {
-//             method: "POST",
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify({
-//                 title: document.getElementById("title").value,
-//                 content: document.getElementById("content").value
-//             })
-//         }).then(() => {
-//             alert("등록 완료되었습니다.");
-//             location.replace("/articles");
-//         });
-//     });
-// }
+const createButton = document.getElementById("create-btn");
+console.log("createButton")
+if (createButton) {
+    createButton.addEventListener("click",event => {
+        console.log("click");
+        fetch(`/api/articles`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                title: document.getElementById("title").value,
+                content: document.getElementById("content").value
+            })
+        }).then(() => {
+            alert("등록 완료되었습니다.");
+            location.replace("/articles");
+        });
+    });
+}
 
 // // 생성 기능
 // const createButton = document.getElementById('create-btn');
