@@ -1,8 +1,6 @@
 const deleteButton = document.getElementById('delete-btn');
-
 if (deleteButton) {
     deleteButton.addEventListener('click', event => {
-        console.log("hou!!!!!!!!!!!");
         let id = document.getElementById('article-id').value;
         fetch(`/api/articles/${id}`, {
 
@@ -16,7 +14,6 @@ if (deleteButton) {
 }
 
 const modifyButton = document.getElementById('modify-btn')
-
 if (modifyButton) {
     modifyButton.addEventListener('click', ev => {
         let params = new URLSearchParams(location.search);
@@ -39,7 +36,7 @@ if (modifyButton) {
 const createButton = document.getElementById("create-btn");
 console.log("createButton")
 if (createButton) {
-    createButton.addEventListener("click",event => {
+    createButton.addEventListener("click", event => {
         console.log("click");
         fetch(`/api/articles`, {
             method: "POST",
@@ -56,25 +53,3 @@ if (createButton) {
         });
     });
 }
-
-// // 생성 기능
-// const createButton = document.getElementById('create-btn');
-//
-// if (createButton) {
-//     createButton.addEventListener('click', event => {
-//         fetch('/api/articles', {
-//             method: 'POST',
-//             headers: {
-//                 "Content-Type": "application/json",
-//             },
-//             body: JSON.stringify({
-//                 title: document.getElementById('title').value,
-//                 content: document.getElementById('content').value
-//             })
-//         })
-//             .then(() => {
-//                 alert('등록 완료되었습니다.');
-//                 location.replace('/articles');
-//             });
-//     });
-// }
