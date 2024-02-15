@@ -1,5 +1,4 @@
 package com.shinyoung.spring.config;
-
 import com.shinyoung.spring.service.UserDetailService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -42,7 +41,6 @@ public class WebSecurityConfig {
         sharedObject.userDetailsService(userService).passwordEncoder(bCryptPasswordEncoder);
         return sharedObject.build();
     }
-
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
