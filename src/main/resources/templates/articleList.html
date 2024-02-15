@@ -16,7 +16,7 @@
     <h1 class="mb-3">My Blog</h1>
     <h4 class="mb-3">블로그에 오신 것을 환경합니다.</h4>
 </div>
-<div class="container">
+<div class="con">
 
     <button type="button" id="create-btn" th:onclick="|location.href='@{/new-article}'|"
             class="btn btn-secondary btn-sm mb-3">글 등록
@@ -31,7 +31,9 @@
             </div>
 
         </div>
+        <br>
     </div>
+    <button type="button" class="btn btn-secondary" onclick="location.href='/logout'">로그아웃</button>
 
 </div>
 
