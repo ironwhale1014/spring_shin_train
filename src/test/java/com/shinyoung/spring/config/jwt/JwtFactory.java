@@ -2,6 +2,7 @@ package com.shinyoung.spring.config.jwt;
 
 
 import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import lombok.Builder;
 import lombok.Getter;
@@ -35,7 +36,9 @@ public class JwtFactory {
 
     public String createToken(JwtProperties jwtProperties) {
 
-        SecretKey secretKey = Keys.hmacShaKeyFor(jwtProperties.getSecretKey().getBytes(StandardCharsets.UTF_8));
+        byte[] keyBytes = Decoders.BASE64.decode(jwtProperties.getSecretKey());
+        SecretKey secretKey = Keys.hmacShaKeyFor(keyBytes);
+
         return Jwts.builder().subject(subject).header().add("typ", "JWT")
                 .and().issuer(jwtProperties.getIssuer()).issuedAt(issuedAt)
                 .expiration(expiration).claims(claims).signWith(secretKey, Jwts.SIG.HS256)
