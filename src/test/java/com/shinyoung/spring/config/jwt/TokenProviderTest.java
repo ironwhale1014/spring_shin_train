@@ -39,7 +39,7 @@ public class TokenProviderTest {
     @DisplayName("generateToken(): 유저 정보와 만료 기간을 전달해 토큰을 만들 수 있다.")
     @Test
     void generateToken() {
-        User testUser = userRepository.save(User.builder().email("user10@gmail.com").password("test").build());
+        User testUser = userRepository.save(User.builder().email("user14@gmail.com").password("test").build());
         String token = tokenProvider.generateToken(testUser, Duration.ofDays(14));
 
         System.out.println("token = " + token);

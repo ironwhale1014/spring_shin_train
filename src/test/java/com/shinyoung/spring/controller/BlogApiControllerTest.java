@@ -20,7 +20,6 @@ import org.springframework.web.context.WebApplicationContext;
 import java.util.List;
 
 
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -164,9 +163,6 @@ class BlogApiControllerTest {
 
         assertThat(article.getTitle()).isEqualTo(newTitle);
         assertThat(article.getContent()).isEqualTo(newContent);
-
-
-
 
     }
 
