@@ -3,8 +3,10 @@ package com.shinyoung.spring.util;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import org.springframework.util.SerializationUtils;
+import org.apache.commons.lang3.SerializationUtils;
 
+import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Base64;
 
 public class CookieUtil {
@@ -32,11 +34,13 @@ public class CookieUtil {
         }
     }
 
-    public static String serialize(Object obj) {
+    public static String serialize(Serializable obj) {
+        System.out.println("Serializable = " + obj);
         return Base64.getUrlEncoder().encodeToString(SerializationUtils.serialize(obj));
     }
 
     public static <T> T deserialize(Cookie cookie, Class<T> cls) {
+        System.out.println("cookie.getName() = " + cookie.getName());
         return cls.cast(SerializationUtils.deserialize(Base64.getUrlDecoder().decode(cookie.getValue())));
     }
 }
